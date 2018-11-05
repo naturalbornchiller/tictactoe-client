@@ -1,6 +1,6 @@
 const store = require('./store.js')
 
-const url = 'https://tic-tac-toe-wdi.herokuapp.com'
+const url = 'https://aqueous-atoll-85096.herokuapp.com'
 
 const signUp = data => {
   return $.ajax({
