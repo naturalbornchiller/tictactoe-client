@@ -10,15 +10,9 @@ ex. start board
      |   |
 */
 
-// CHECK AVAILABLE MOVES
-const emptyIndexes = board => {
-  return board.filter(space => space !== 'o' && space !== 'x')
-}
-
 // CHECK IF TIE
 const isTie = board => {
-  const emptyCells = emptyIndexes(board)
-  return emptyCells.length === 0
+  return board.every(space => space !== '')
 }
 
 // CHECK IF WIN
