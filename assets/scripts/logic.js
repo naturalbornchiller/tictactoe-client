@@ -12,7 +12,7 @@ ex. start board
 
 // CHECK IF TIE
 const isTie = board => {
-  return board.every(space => space !== '')
+  return board.every(space => typeof space !== 'number')
 }
 
 // CHECK IF WIN

@@ -1,10 +1,12 @@
 const store = require('./store.js')
 
-const url = 'https://aqueous-atoll-85096.herokuapp.com'
+// hosts
+const devURL = 'https://tic-tac-toe-wdi.herokuapp.com'
+const prodUrl = 'https://aqueous-atoll-85096.herokuapp.com'
 
 const signUp = data => {
   return $.ajax({
-    url: `${url}/sign-up`,
+    url: `${devURL}/sign-up`,
     method: 'POST',
     data
   })
@@ -12,7 +14,7 @@ const signUp = data => {
 
 const signIn = data => {
   return $.ajax({
-    url: `${url}/sign-in`,
+    url: `${devURL}/sign-in`,
     method: 'POST',
     data
   })
@@ -21,7 +23,7 @@ const signIn = data => {
 const logout = () => {
   console.log(store)
   return $.ajax({
-    url: `${url}/sign-out`,
+    url: `${devURL}/sign-out`,
     method: 'DELETE',
     headers: {
       Authorization: 'Token token=' + store.user.token
@@ -31,19 +33,24 @@ const logout = () => {
 
 const changePassword = data => {
   console.log(data)
-  return $.ajax({
-    url: `${url}/change-password`,
-    method: 'PATCH',
-    headers: {
-      Authorization: 'Token token=' + store.user.token
-    },
-    data
-  })
+  if (data.passwords.old !== data.passwords.new) {
+    return $.ajax({
+      url: `${devURL}/change-password`,
+      method: 'PATCH',
+      headers: {
+        Authorization: 'Token token=' + store.user.token
+      },
+      data
+    })
+  }
+  $('#message').text('New password cannot be same as old')
+  $('#message').removeClass()
+  $('#message').addClass('failure')
 }
 
 const getAllGames = () => {
   return $.ajax({
-    url: `${url}/games`,
+    url: `${devURL}/games`,
     method: 'GET',
     headers: {
       Authorization: 'Token token=' + store.user.token
@@ -53,7 +60,7 @@ const getAllGames = () => {
 
 const getOneGame = id => {
   return $.ajax({
-    url: `${url}/games/${id}`,
+    url: `${devURL}/games/${id}`,
     method: 'GET',
     headers: {
       Authorization: 'Token token=' + store.user.token
@@ -63,7 +70,7 @@ const getOneGame = id => {
 
 const startGame = () => {
   return $.ajax({
-    url: `${url}/games`,
+    url: `${devURL}/games`,
     method: 'POST',
     headers: {
       Authorization: 'Token token=' + store.user.token
@@ -74,7 +81,7 @@ const startGame = () => {
 
 const updateGame = data => {
   return $.ajax({
-    url: `${url}/games/${store.game.id}`,
+    url: `${devURL}/games/${store.game.id}`,
     method: 'PATCH',
     headers: {
       Authorization: 'Token token=' + store.user.token

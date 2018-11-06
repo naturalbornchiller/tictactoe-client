@@ -42,13 +42,6 @@ const onLogout = event => {
 const onChangePassword = event => {
   event.preventDefault()
   const data = getFormFields(event.target)
-
-  if (data.old === data.new) {
-    $('#message').text('New password cannot be the same')
-    $('#message').removeClass()
-    $('#message').addClass('failure')
-  }
-
   api.changePassword(data)
     .then(ui.changePasswordSuccess) // if request successful
     .catch(ui.changePasswordFailure) // if request unsuccessful
@@ -94,14 +87,12 @@ const onUpdateGame = event => {
 
   // check for win
   if (logic.isWin(board, player)) {
-    console.log('Game recognizes win!')
     gameOver = true // game is over
     $('#game-status').removeClass()
     $('#game-status').addClass('win')
     $('#game-status').html('')
     $('#game-status').prepend(`Player ${player} won!`)
   } else if (logic.isTie(board)) { // check for tie
-    console.log('Game recognizes tie!')
     gameOver = true // game is over
     $('#game-status').removeClass()
     $('#game-status').addClass('tie')

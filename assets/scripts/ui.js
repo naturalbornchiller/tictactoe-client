@@ -1,33 +1,34 @@
 const store = require('./store.js')
 
 const signUpSuccess = data => {
-  console.log('My signed up user data is.. ', data)
   $('#message').text('Signed up successfully')
   $('#message').removeClass()
   $('#message').addClass('success')
   $('input:text, input:password').val('')
-  console.log('signUpSuccess ran. Data is : ', data)
 }
 
 const signUpFailure = error => {
-  $('#message').text('Error on sign up')
-  $('#message').removeClass()
-  $('#message').addClass('failure')
-  $('input:text, input:password').val('')
-  console.log('signUpFailure ran. Error is: ', error)
+  if (error.responseJSON.password_confirmation[0] === "doesn't match Password") {
+    $('#message').text('Passwords must be the same')
+    $('#message').removeClass()
+    $('#message').addClass('failure')
+  } else {
+    $('#message').text('Error on sign up')
+    $('#message').removeClass()
+    $('#message').addClass('failure')
+    $('input:text, input:password').val('')
+  }
 }
 
 const signInSuccess = data => {
   // hide sign-in/up, show logout
   $('#sign-up-container, #sign-in-container, #change-password,' +
     '#show-games-container, #start-game, #logout, #change-password').toggleClass('hidden')
-  console.log('My signed in user data is.. ', data)
   store.user = data.user
   $('#message').text('Signed in successfully')
   $('#message').removeClass()
   $('#message').addClass('success')
   $('input:text, input:password').val('')
-  console.log('signInSuccess ran. Data is : ', data)
 }
 
 const signInFailure = error => {
@@ -49,7 +50,6 @@ const logoutSuccess = data => {
   $('#message').removeClass()
   $('#message').addClass('success')
   $('input:text, input:password').val('')
-  console.log('logoutSuccess ran. Data is: ', data)
 }
 
 const logoutFailure = error => {
@@ -60,12 +60,10 @@ const logoutFailure = error => {
 }
 
 const changePasswordSuccess = data => {
-  console.log('My change password user data is.. ', data)
   $('#message').text('Changed password successfully')
   $('#message').removeClass()
   $('#message').addClass('success')
   $('input:text, input:password').val('')
-  console.log('changePasswordSuccess ran. Data is : ', data)
 }
 
 const changePasswordFailure = error => {
@@ -194,10 +192,6 @@ const createGameFailure = error => {
   console.log('createGameFailure ran. Error is: ', error)
 }
 
-const updateGameSuccess = data => {
-  console.log('move made.')
-}
-
 const updateGameFailure = error => {
   $('#message').html('')
   $('#message').prepend('Error, token not placed')
@@ -219,6 +213,5 @@ module.exports = {
   getOneGameFailure,
   createGameSuccess,
   createGameFailure,
-  updateGameSuccess,
   updateGameFailure
 }
