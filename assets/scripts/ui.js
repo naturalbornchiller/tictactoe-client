@@ -10,11 +10,16 @@ const signUpSuccess = data => {
 }
 
 const signUpFailure = error => {
-  $('#message').text('Error on sign up')
-  $('#message').removeClass()
-  $('#message').addClass('failure')
-  $('input:text, input:password').val('')
-  console.log('signUpFailure ran. Error is: ', error)
+  if (error.responseJSON.password_confirmation[0] === "doesn't match Password") {
+    $('#message').text('Passwords must be the same')
+    $('#message').removeClass()
+    $('#message').addClass('failure')
+  } else {
+    $('#message').text('Error on sign up')
+    $('#message').removeClass()
+    $('#message').addClass('failure')
+    $('input:text, input:password').val('')
+  }
 }
 
 const signInSuccess = data => {
