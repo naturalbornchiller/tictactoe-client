@@ -87,14 +87,12 @@ const onUpdateGame = event => {
 
   // check for win
   if (logic.isWin(board, player)) {
-    console.log('Game recognizes win!')
     gameOver = true // game is over
     $('#game-status').removeClass()
     $('#game-status').addClass('win')
     $('#game-status').html('')
     $('#game-status').prepend(`Player ${player} won!`)
   } else if (logic.isTie(board)) { // check for tie
-    console.log('Game recognizes tie!')
     gameOver = true // game is over
     $('#game-status').removeClass()
     $('#game-status').addClass('tie')

@@ -29,3 +29,14 @@ be super fun to think through.
 - vanilla js
 - jquery
 - ajax
+
+## Userstories
+  a. as an inexperienced player I want a game description
+  b. as a social player I want a way of playing agaist a friend
+  c. as a lone wolf I want a way of playing against a computer
+  d. as a sore loser I want a restart button
+  e. as a determined player I want a range of difficulties
+  f. as a competitive player I want a the computer to play really well
+
+## Link to Wireframe
+tictactoe-client/wireframes.png
