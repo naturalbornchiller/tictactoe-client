@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>tic-tac-toe</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Do not add `link` tags-->
+    <link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
+
+    <!-- Do not add `script` tags-->
+    <script src="public/vendor.js" type="text/javascript" charset="utf-8" defer></script>
+    <script src="public/application.js" type="text/javascript" charset="utf-8" defer></script>
+  </head>
+  <body>
+    <div class="topnav">
+      <div id="sign-up-container">
+        <form id="sign-up">
+          <fieldset>
+            <input type="text" name="credentials[email]" placeholder="Email" />
+            <input type="password" name="credentials[password]" placeholder="Password" />
+            <input type="password" name="credentials[password_confirmation]" placeholder="Confirm Password" />
+            <input type="submit" value="Sign up" />
+          </fieldset>
+        </form>
+      </div>
+      <div id="sign-in-container">
+        <form id="sign-in">
+          <fieldset>
+            <input type="text" name="credentials[email]" placeholder="Email" />
+            <input type="password" name="credentials[password]" placeholder="Password" />
+            <input type="submit" value="Sign in" />
+          </fieldset>
+        </form>
+      </div>
+      <div id="change-password-container">
+        <form class="hidden" id="change-password">
+          <fieldset>
+            <input type="password" name="passwords[old]" placeholder="Old password" />
+            <input type="password" name="passwords[new]" placeholder="New password" />
+            <input type="submit" value="Change password" />
+          </fieldset>
+        </form>
+      </div>
+      <button class="hidden" id="logout">Logout</button>
+    </div>
+    <p id="message"></p>
+    <aside class="hidden" id="show-games-container">
+      <button id="get-all-games">Show All Previous Games</button>
+      <form id="get-one-game">
+        <input type="submit" value="Show One Previous Game"/>
+        <input id="get-game-by-id" type="text" placeholder="id of game" />
+      </form>
+      <div id="display-games"></div>
+    </aside>
+    <h1 id="main-header">Tic-Tac-Toe</h1>
+    <div style="display: flex; justify-content: center;">
+      <button class="hidden" id="start-game">Play</button>
+    </div>
+    <div class="hidden" id="game-elements">
+      <p class="game-items" id="game-status"></p>
+      <button class="game-items" id="reset">Reset</button>
+      <div id="grid">
+        <!-- space for game board -->
+      </div>
+    </div>
+  </body>
+</html>
