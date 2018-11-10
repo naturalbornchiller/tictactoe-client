@@ -6,7 +6,7 @@ const prodUrl = 'https://aqueous-atoll-85096.herokuapp.com'
 
 const signUp = data => {
   return $.ajax({
-    url: `${devURL}/sign-up`,
+    url: `${prodUrl}/sign-up`,
     method: 'POST',
     data
   })
@@ -14,7 +14,7 @@ const signUp = data => {
 
 const signIn = data => {
   return $.ajax({
-    url: `${devURL}/sign-in`,
+    url: `${prodUrl}/sign-in`,
     method: 'POST',
     data
   })
@@ -23,7 +23,7 @@ const signIn = data => {
 const logout = () => {
   console.log(store)
   return $.ajax({
-    url: `${devURL}/sign-out`,
+    url: `${prodUrl}/sign-out`,
     method: 'DELETE',
     headers: {
       Authorization: 'Token token=' + store.user.token
@@ -35,7 +35,7 @@ const changePassword = data => {
   console.log(data)
   if (data.passwords.old !== data.passwords.new) {
     return $.ajax({
-      url: `${devURL}/change-password`,
+      url: `${prodUrl}/change-password`,
       method: 'PATCH',
       headers: {
         Authorization: 'Token token=' + store.user.token
@@ -50,7 +50,7 @@ const changePassword = data => {
 
 const getAllGames = () => {
   return $.ajax({
-    url: `${devURL}/games`,
+    url: `${prodUrl}/games`,
     method: 'GET',
     headers: {
       Authorization: 'Token token=' + store.user.token
@@ -60,7 +60,7 @@ const getAllGames = () => {
 
 const getOneGame = id => {
   return $.ajax({
-    url: `${devURL}/games/${id}`,
+    url: `${prodUrl}/games/${id}`,
     method: 'GET',
     headers: {
       Authorization: 'Token token=' + store.user.token
@@ -70,7 +70,7 @@ const getOneGame = id => {
 
 const startGame = () => {
   return $.ajax({
-    url: `${devURL}/games`,
+    url: `${prodUrl}/games`,
     method: 'POST',
     headers: {
       Authorization: 'Token token=' + store.user.token
@@ -81,7 +81,7 @@ const startGame = () => {
 
 const updateGame = data => {
   return $.ajax({
-    url: `${devURL}/games/${store.game.id}`,
+    url: `${prodUrl}/games/${store.game.id}`,
     method: 'PATCH',
     headers: {
       Authorization: 'Token token=' + store.user.token
